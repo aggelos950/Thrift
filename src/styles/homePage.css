@@ -1,0 +1,40 @@
+img{
+    width: 280px;
+    height: 400px;
+    margin-top: 10px;
+   margin-left: 20px;
+   margin-right: 20px;
+   border-radius: 10px;
+   
+}
+
+.startingDiv{
+    text-align: center;
+    background:rgb(204, 204, 204); ;
+    background: rgba(204, 204, 204, 0.7);
+    width: 70%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.startingDiv p {
+    font-size: 45px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+   
+}
+
+
+
+.photoDiv{
+    text-align: center;
+}
+
+.photoDiv p{
+    font-size: 30px;
+    text-align: right;
+    margin-right: 50px;
+    margin-bottom: 60px;
+}
