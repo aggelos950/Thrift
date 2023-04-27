@@ -1,23 +1,10 @@
 import React, { useEffect, useState }  from "react";
-import './DarkToLight.css';
+import useTheme from "./useTheme";
 
 function DarkToLight(){
-    const [theme,setTheme] = useState(false);
-
-    function handleClick(){
-        setTheme(!theme)
-    }
-
-    useEffect(()=>{
-        if(theme==true){
-            document.body.classList.add("dark");
-        }else{
-            document.body.classList.remove("dark");
-        }
-    })
-
+    const {theme,handleClick} = useTheme();
     return(
-        <div>
+        <div className="darkToLight">
             <button onClick={handleClick}>{theme?"Light":"Dark"}</button>
         </div>
     )

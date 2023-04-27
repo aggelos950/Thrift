@@ -1,0 +1,61 @@
+.parent{
+    position: relative;
+    
+}
+
+.child{
+    position: absolute;
+    width: 500px;
+    height: 270px;
+    margin-left: 110px;
+    
+}
+
+.child p {
+    font-size: 22px;
+    margin: 10px 10px 10px 10px;
+}
+
+.child-1 {
+    left: 0;
+    background: rgb(150, 148, 148);
+    
+  }
+  
+.child-2 {
+    left: 100px;
+    background: rgb(194, 127, 3);
+    margin-top: 60px;
+    
+  }
+
+.child-3{
+    left: 200px;
+    background: rgb(66, 116, 99);
+    margin-top: 113px;
+    
+}
+
+.showDiv{
+    z-index: 1;
+}
+
+
+.parent h1{
+    margin-left: 55px;
+    font-size: 40px;
+    margin-bottom: 70px;
+}
+
+.changeAbout button{
+    margin-left: 520px;
+    margin-top: 395px;
+    width: 60px;
+    height:40px;
+    border-radius: 25px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 18px;
+    position: absolute;
+    border:  2px solid ;
+    
+}
