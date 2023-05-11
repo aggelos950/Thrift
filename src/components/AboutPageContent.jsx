@@ -1,16 +1,21 @@
 import React from "react";
 import ChangeAbout from "./ChangeAbout";
+import Image from "./Image";
+
+
+const aboutImage = [{id:100,src:require('../imagesNew/aboutImg2.jpg')}];
 
 function AboutPageContent(){
-    return(
+    return( 
         <div className="parent">
             <h1>About The Festival</h1>
+            <Image key={aboutImage[0].id} dest={aboutImage[0].src} />
             <div className="child child-1" id="one">
                 <p>
  "One man's trash, that's another man's come up", was said by the American hip hop duo Macklemore & Ryan Lewis, in the 2012 hit the "Thrift Shop", and how true were they? 
- In this state of mind, more and more local thrift shops in Greece were endorsed, opening new possibilities for fashion and clothing. The desire for seeing the 
+ In this state of mind, more and more local thrift shops in Greece were endorsed, opening new possibilities for fashion and clothing. The desire to 
  witness the peak of the Thrift "magic" was formed, and so many Thrift Shops came together to bring you the Thrift Fest. A 3-days festival, with more clothes, 
- than the human eye can see, and many many surprises for those have the nerve to discover them.
+ than the human eye can see, and many many surprises for those, who have the nerve to discover them.
                 </p>
             </div>
             <div className="child child-2 " id="two">

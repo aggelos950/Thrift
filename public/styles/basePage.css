@@ -28,11 +28,12 @@ nav{
     float:right;
 }
 
-.logo h1{
+.logo a{
     float:left;
     margin-left: 20px;
     font-size: 55px;
     margin-top: 12px;
+    text-decoration: none;
 }
 
 ul li {
@@ -50,4 +51,6 @@ ul li a:hover{
     color:#606060; 
   }
 
-
+a{
+    color: black;
+}
