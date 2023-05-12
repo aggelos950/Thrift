@@ -1,11 +1,6 @@
 import React from "react";
 import Image from "./Image";
-import img1 from "../imagesNew/homePage1.jpg"
-import img2 from "../imagesNew/homePage2.jpg"
-import img3 from "../imagesNew/homePage3.jpg"
-import img4 from "../imagesNew/homePage4.jpg"
-import img5 from "../imagesNew/homePage5.jpg"
-import img6 from "../imagesNew/homePage6.jpg"
+
 
 const images = [
   {id:1,src:require('../imagesNew/homePage1.jpg')},

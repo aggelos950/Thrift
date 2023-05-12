@@ -1,0 +1,27 @@
+.searchLinkDiv{
+    text-align: center;
+}
+
+
+.searchBar{
+    border: none;
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    height: 30px;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+.searchLinkDiv a{
+    text-decoration: none;
+    font-size: 30px;
+   margin-left: 5px;
+   color: brown;
+}
+
+.linkDiv{
+    display: flex;
+    margin-left: 20px;
+}
