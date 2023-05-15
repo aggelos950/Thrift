@@ -10,7 +10,6 @@ img{
 
 .startingDiv{
     text-align: center;
-    background:rgb(204, 204, 204); ;
     background: rgba(204, 204, 204, 0.7);
     width: 70%;
     padding-top: 10px;
@@ -49,7 +48,7 @@ img{
     color: aliceblue;
 }
 
-.darkLinks{
+.dark a {
     color: aliceblue;
 }
 

@@ -3,27 +3,16 @@ import { useState ,useEffect } from "react";
 //Custom HOOK
 
 export default function useTheme(){
-    const [theme,setTheme] = useState(false);
-    const nodeList = document.querySelectorAll("a")
-
-    function handleClick(){
-        setTheme(!theme)
-    }
+    const [isDark, setIsDark] = useState(true);
 
     useEffect(()=>{
-        if(theme==true){
-            document.body.classList.add("dark");
-            for (var i=0;i<nodeList.length;i++){
-                nodeList[i].classList.add("darkLinks");
-            } 
+        if(isDark==true){
+            document.body.classList.add("dark"); 
         }else{
             document.body.classList.remove("dark");
-            for ( var i=0;i<nodeList.length;i++){
-                nodeList[i].classList.remove("darkLinks");
-            } 
         }
-    },[theme])
+    },[isDark])
 
-    return {handleClick,theme};
+    return { isDark, setIsDark };
 }
 

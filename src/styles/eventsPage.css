@@ -1,4 +1,4 @@
-.searchLinkDiv{
+.eventsContentDiv{
     text-align: center;
 }
 
@@ -14,14 +14,52 @@
 }
 
 
-.searchLinkDiv a{
+.eventsContentDiv a{
     text-decoration: none;
     font-size: 30px;
    margin-left: 5px;
    color: brown;
+   margin-bottom: 20px;
 }
 
 .linkDiv{
     display: flex;
     margin-left: 20px;
 }
+
+
+.eventInfo{
+    display: inline-block;
+}
+
+.eventInfo h1,
+.eventInfo h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.eventInfo p{
+    padding-top: 20px;
+    
+}
+
+
+
+.eventDiv img{
+height: 125px;
+width: 125px;
+
+}
+
+.eventDiv{
+    background: rgba(204, 204, 204, 1);
+    width: 60%;
+    height: 150px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 0px;
+    display: inline-block;
+    border-radius: 5px;
+    text-align: left;
+}
+
