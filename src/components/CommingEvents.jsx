@@ -1,16 +1,51 @@
-import Image from "./Image";
+import Event from "./Event";
+
+
+
+const commingEvents = [
+    {
+        id:1,
+        src:require('../imagesNew/homePage1.jpg'),
+        title:"Open Doors",
+        date:"07/07/2023",
+        description:"wergreger rt34t4 t34ty 4t45tt 4t34t..." 
+    },
+    {
+        id:2,
+        src:require('../imagesNew/homePage1.jpg'),
+        title:"Open Doors",
+        date:"07/07/2023",
+        description:"wergreger rt34t4 t34ty 4t45tt 4t34t..." 
+    },
+    {
+        id:3,
+        src:require('../imagesNew/homePage1.jpg'),
+        title:"Open Doors",
+        date:"07/07/2023",
+        description:"wergreger rt34t4 t34ty 4t45tt 4t34t..." 
+    },
+    {
+        id:4,
+        src:require('../imagesNew/homePage1.jpg'),
+        title:"Open Doors",
+        date:"07/07/2023",
+        description:"wergreger rt34t4 t34ty 4t45tt 4t34t..." 
+    },
+    {
+        id:5,
+        src:require('../imagesNew/homePage1.jpg'),
+        title:"Open Doors",
+        date:"07/07/2023",
+        description:"wergreger rt34t4 t34ty 4t45tt 4t34t..." 
+    },
+];
 
 
 function CommingEvents(){
     return (
-        <div className="eventDiv">
-            <Image key={30} dest={require('../imagesNew/homePage1.jpg')} />
-            <div className="eventInfo">
-                <h1>Open Doors</h1>
-                <h3>07/07/2023 - 11:00am</h3>
-                <p>hhhwuohe3hr3ohrpi orh h4th4p89t    </p>
-            </div>
-        </div>
+        commingEvents.map((event)=>{
+           return(<Event key={event.id} img={event.src} title={event.title} date={event.date} desc={event.description} />);
+        }) 
     )
 }
 

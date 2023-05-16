@@ -5,7 +5,7 @@
 
 .searchBar{
     border: none;
-    background-color: #D3D3D3;
+    background-color: rgba(204, 204, 204, 1);
     border-radius: 10px;
     height: 30px;
     width: 300px;
@@ -20,7 +20,13 @@
    margin-left: 5px;
    color: brown;
    margin-bottom: 20px;
+   
 }
+
+.eventsContentDiv a:hover{
+  opacity: 0.8;
+}
+
 
 .linkDiv{
     display: flex;
@@ -61,5 +67,12 @@ width: 125px;
     display: inline-block;
     border-radius: 5px;
     text-align: left;
+    max-width: 800px;
+    min-width: 400px;
+}
+
+.allEventDiv{
+    margin-bottom: 120px;
+    
 }
 
