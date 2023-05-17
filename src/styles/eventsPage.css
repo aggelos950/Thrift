@@ -64,7 +64,10 @@ width: 125px;
     padding: 10px;
     margin-top: 10px;
     margin-right: 0px;
-    display: inline-block;
+    display: block;
+    margin:0 auto;
+    margin-bottom: 15px;
+    
     border-radius: 5px;
     text-align: left;
     max-width: 800px;
@@ -73,6 +76,5 @@ width: 125px;
 
 .allEventDiv{
     margin-bottom: 120px;
-    
+    margin-top: 40px;
 }
-
