@@ -25,7 +25,7 @@ function HomePageContent(){
           <p>? What to expect ? . </p>
             
             {images.map((image)=>{
-            return <Image key={image.dest} dest={image.src} />
+            return <Image key={image.id} dest={image.src} />
             })}
           <p className="photoDivP">! And many more ! </p>
         </div>
