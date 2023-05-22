@@ -3,15 +3,15 @@ const dataEvents = [
         id:1,
         src:require('../imagesNew/homePage1.jpg'),
         title:"Closing",
-        date:"07/07/2023",
+        date:"30/07/2023",
         description:"wergreger rt34t4 t34ty 4t45tt 4t34t...",
-        passed:true
+        passed:false
     },
     {
         id:2,
         src:require('../imagesNew/homePage2.jpg'),
         title:"Open Doors",
-        date:"07/07/2023",
+        date:"30/07/2023",
         description:"wergreger rt34t4 t34ty 4t45tt 4t34t..." ,
         passed:false
     },
@@ -19,7 +19,7 @@ const dataEvents = [
         id:3,
         src:require('../imagesNew/homePage3.jpg'),
         title:"Techno Party",
-        date:"07/07/2023",
+        date:"30/07/2023",
         description:"wergreger rt34t4 t34ty 4t45tt 4t34t..." ,
         passed:false
     },
@@ -27,7 +27,7 @@ const dataEvents = [
         id:4,
         src:require('../imagesNew/homePage4.jpg'),
         title:"Sell Out",
-        date:"07/07/2023",
+        date:"28/07/2023",
         description:"wergreger rt34t4 t34ty 4t45tt 4t34t...",
         passed:true 
     },
@@ -35,7 +35,7 @@ const dataEvents = [
         id:5,
         src:require('../imagesNew/homePage5.jpg'),
         title:"Film Display",
-        date:"07/07/2023",
+        date:"29/07/2023",
         description:"wergreger rt34t4 t34ty 4t45tt 4t34t..." ,
         passed:true
     },

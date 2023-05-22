@@ -84,3 +84,37 @@ width: 125px;
 .passed{
     opacity: 0.8;
 }
+
+.modalBtn{
+    background-color: dimgray;
+    border: none;
+    width: 50px;
+    height:30px;
+    border-radius: 40px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.modalBtn:hover{
+    opacity: 0.8;
+}
+
+
+.modal img{
+    margin-top: 30px;
+    width: 220px;
+    height: 300px;
+}
+.modal h1{
+    font-size: 40px;
+    margin-bottom: 0px;
+}
+.modal h2{
+    font-size: 23px;
+    margin-top: 5px;
+}

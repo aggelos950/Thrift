@@ -1,13 +1,13 @@
 import Event from "./Event";
+import Events from "../pages/Events";
 import dataEvents from "./eventData";
-
 
 function PassedEvents(){
 
-   
 
     return (
-        dataEvents
+        <Events>
+        {dataEvents
         .filter(event=>event.passed)
         .map((event)=>  (
             <Event 
@@ -18,7 +18,8 @@ function PassedEvents(){
                 desc={event.description} 
                 passed={event.passed}
             />
-        ))
+        ))}
+        </Events>
     )
 }
 

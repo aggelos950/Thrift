@@ -7,7 +7,7 @@ function Event(props){
 const passedClass = props.passed?"passed":"";
 
     return(
-        <div className={`eventDiv ${passedClass}`} onClick={props.handleClick}>
+        <div id={props.id} className={`eventDiv ${passedClass}`} onClick={props.handleClick}>
                <Image key={props.id} dest={props.img}/>
                <div className="eventInfo">
                    <h1>{props.title}</h1>

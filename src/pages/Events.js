@@ -1,14 +1,10 @@
 import { Link, Outlet } from 'react-router-dom';
 import '../styles/eventsPage.css';
-import { useState, createContext } from 'react';
+import { useState } from 'react';
 
 
-export const SearchContext = createContext(null);
-
-function Events() {
+function Events(props) {
      const [eventFilter,setEventFilter] = useState("");
-
-
 
 
     function handleChange(event){
@@ -16,20 +12,20 @@ function Events() {
     }
 
     return (
-        <SearchContext.Provider value={eventFilter}>
+        
             <div className='eventsContentDiv'>
                 <input type='search' placeholder='Search Event' className='searchBar' onChange={handleChange} value={eventFilter}/>
                 <div className='linkDiv'>
-                    <Link to='passedEvents' className='listLink'>Passed Events</Link>
-                    <Link to='commingEvents' className='listLink'>| Comming Soon!!!</Link>
+                    <Link to='/events/passedEvents' className='listLink'>Passed Events</Link>
+                    <Link to='/events/commingEvents' className='listLink'>| Comming Soon!!!</Link>
                 </div>
                     
                     <div className='allEventDiv'>
-                        <Outlet />
+                       {props.children}
                     </div>
                     
             </div>
-        </SearchContext.Provider>
+        
     );
 }
 
