@@ -96,8 +96,8 @@ width: 125px;
     position: absolute;
     top: 0;
     right: 0;
-    margin-top: 5px;
-    margin-right: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .modalBtn:hover{
@@ -111,10 +111,66 @@ width: 125px;
     height: 300px;
 }
 .modal h1{
-    font-size: 40px;
+    font-size: 45px;
     margin-bottom: 0px;
 }
 .modal h2{
     font-size: 23px;
     margin-top: 5px;
+}
+
+
+form h1{
+    font-size: 27px;
+}
+
+form{
+    margin-top: 20px;
+}
+
+.attendats{
+    margin-bottom: 10px;
+}
+
+.attendats label{
+    font-size: 21px;
+}
+
+.attendats select{
+    padding-top: 3px;
+}
+
+
+.typeTicket {
+    margin-bottom: 10px;
+}
+
+.formBtn{
+    background-color: dimgray;
+    border: none;
+    width: 50px;
+    height:30px;
+    border-radius: 40px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 20px;
+    margin-bottom: 20px;
+    display:  block;
+    margin-left: 45%;
+    margin-top: 10px;
+}
+
+.info input{
+    width: 70%;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 5px;
+    height: 20px;
+}
+
+
+
+.banks{
+    display: block;
+    margin-left: 30%;
+    width: 40%;
 }

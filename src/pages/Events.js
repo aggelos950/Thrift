@@ -1,15 +1,20 @@
 import { Link, Outlet } from 'react-router-dom';
 import '../styles/eventsPage.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function Events(props) {
-     const [eventFilter,setEventFilter] = useState("");
 
+    const [eventFilter,setEventFilter] = useState("");
 
     function handleChange(event){
-        setEventFilter(event.target.value);
+        setEventFilter(event.target.value.toLowerCase());
     }
+
+    useEffect(()=>{
+        props.func(eventFilter);
+     },[eventFilter]);
+   
 
     return (
         

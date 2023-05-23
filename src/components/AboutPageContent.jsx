@@ -1,6 +1,6 @@
 import React from "react";
 import ChangeAbout from "./ChangeAbout";
-import Image from "./Image";
+import Image from "./SimpleElementsFolder/Image";
 
 
 const aboutImage = [{id:100,src:require('../imagesNew/aboutImg2.jpg')}];

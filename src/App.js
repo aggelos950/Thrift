@@ -2,13 +2,12 @@ import { useState, useEffect, createContext } from 'react';
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Events from "./pages/Events";
 import User from "./pages/User";
 import NotFound from "./pages/NotFound";
-import PassedEvents from "./components/PassedEvents";
-import CommingEvents from "./components/CommingEvents";
-import useTheme from './components/useTheme';
-import Layout from "./components/Layout";
+import PassedEvents from "./components/EventFolder/PassedEvents";
+import CommingEvents from "./components/EventFolder/CommingEvents";
+import useTheme from './components/StarterFolder/useTheme';
+import Layout from "./components/StarterFolder/Layout";
 
 export const ThemeContext = createContext(null);
 

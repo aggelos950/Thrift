@@ -1,15 +1,17 @@
 import Event from "./Event";
-import Events from "../pages/Events";
+import Events from "../../pages/Events";
 import dataEvents from "./eventData";
+import { useState } from "react";
 
 function PassedEvents(){
-
+    const [searchFilter,setSearchFilter] = useState(null);
 
     return (
-        <Events>
+        <Events func={setSearchFilter}>
         {dataEvents
+        .filter(event=>event.title.toLocaleLowerCase().includes(searchFilter))
         .filter(event=>event.passed)
-        .map((event)=>  (
+        .map((event)=>(
             <Event 
                 key={event.id} 
                 img={event.src} 
