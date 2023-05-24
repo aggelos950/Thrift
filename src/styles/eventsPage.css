@@ -165,6 +165,7 @@ form{
     border: none;
     border-radius: 5px;
     height: 20px;
+    padding-left: 5px;
 }
 
 
@@ -173,4 +174,8 @@ form{
     display: block;
     margin-left: 30%;
     width: 40%;
+}
+
+ .total{
+    text-align: center;
 }
