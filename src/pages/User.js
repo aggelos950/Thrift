@@ -1,7 +1,15 @@
+import { Link,Outlet } from 'react-router-dom';
+import '../styles/loginSignUp.css'
 
 
-function User(){
-    return(<h1>User Page</h1>);
+function User(props){
+    return(
+        <div className='divUser'>
+            <Link to='/user/login' className='loginLink'>Login </Link>
+            <Link to='/user/signup' > | SignUp</Link>
+            <Outlet />
+        </div>
+    );
 }
 
-export default User;
+export default User; 

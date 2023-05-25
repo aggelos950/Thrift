@@ -8,6 +8,9 @@ import PassedEvents from "./components/EventFolder/PassedEvents";
 import CommingEvents from "./components/EventFolder/CommingEvents";
 import useTheme from './components/StarterFolder/useTheme';
 import Layout from "./components/StarterFolder/Layout";
+import SignUp from './components/LoginFolder/SignUp';
+import Login from './components/LoginFolder/Login';
+import Profile from './components/LoginFolder/Profile';
 
 export const ThemeContext = createContext(null);
 
@@ -24,7 +27,12 @@ function App() {
                         <Route path="passedEvents" element={<PassedEvents />} />
                         <Route path="commingEvents" element={<CommingEvents />} />
                     </Route>
-                    <Route path="user" element={<User />} />
+                    <Route path="user" element={<User />} >
+                        <Route index element={<Login />} />
+                        <Route path="signup" element={<SignUp />} />
+                        <Route path="login" element={<Login />} />
+                    </Route>
+                    <Route  path="profile" element={<Profile />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

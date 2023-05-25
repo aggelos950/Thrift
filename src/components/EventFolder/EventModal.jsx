@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Image from '../SimpleElementsFolder/Image';
 
@@ -11,6 +11,8 @@ const EventModal = ({ event, onClose }) => {
     const [isOpen,setIsOpen] = useState(false);
     const [isVisible,setIsVisible] = useState(false);
     const [selected,setSelected] = useState(1);
+    const [ticketSelected,setTicketSelected] = useState("");
+    const [total,setTotal] = useState("0$");
     const [inputFields,setInputFields] = useState([
         {name:'',surname:'',age:''}
     ])
@@ -26,14 +28,19 @@ const EventModal = ({ event, onClose }) => {
         document.body.style.overflow = 'hidden';
     }
     
-   function  componentWillUnmount() {
+    function  componentWillUnmount() {
         document.body.style.overflow = 'unset';
     }
 
-   function onChange(event){
+    function onChange1(event){
       setSelected(event.target.value);
-      
-      }
+    }
+
+
+    function onChange2(event){
+        setTicketSelected(event.target.value);
+     }
+     
       
 
     function handleFormChange(index,event){
@@ -52,14 +59,32 @@ const EventModal = ({ event, onClose }) => {
         setIsVisible(!isVisible);
     }
 
+    useEffect(() => {
+        var newInputFields = [];
+        for (var i = 0; i<selected; i++) {
+            newInputFields.push({name:'',surname:'',age:''})
+        }
+        setInputFields(newInputFields);
+
+        if (ticketSelected==="vip"){
+           setTotal(5*selected+"$");
+
+        }else if (ticketSelected==="prem"){
+            setTotal(2*selected+"$");
+
+        }else{
+            setTotal(1*selected+"$");
+        }
+
+
+    }, [selected,ticketSelected]); 
+
     if (event===null){
         componentWillUnmount();
         return null;
     } else{
         componentDidMount();
     }
-
-
 
     //return statement
     return (
@@ -93,7 +118,7 @@ const EventModal = ({ event, onClose }) => {
 
                 <div className='attendats'>
                     <label>Attendats: </label>
-                    <select onChange={onChange} disabled={isOpen} >
+                    <select onChange={onChange1} disabled={isOpen} >
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -103,9 +128,9 @@ const EventModal = ({ event, onClose }) => {
 
                 
                 <div className='typeTicket'>
-                    <input type="radio" value="normal" name="gender" disabled={isOpen} /> Normal
-                    <input type="radio" value="student" name="gender" disabled={isOpen} /> Premnium
-                    <input type="radio" value="unemploye" name="gender" disabled={isOpen} /> VIP
+                    <input type="radio" value="norm" name="gender" disabled={isOpen} onChange={onChange2}/> Normal
+                    <input type="radio" value="prem" name="gender" disabled={isOpen} onChange={onChange2}/> Premnium
+                    <input type="radio" value="vip" name="gender" disabled={isOpen} onChange={onChange2}/> VIP
                 </div>
                 <button onClick={handleClick1} className='formBtn'>{isOpen?"Change":"Next"}</button>
 
@@ -123,7 +148,7 @@ const EventModal = ({ event, onClose }) => {
                         </div>
                     );
                 })}      
-                   <input type='text' value="20$" disabled={true} className='total'/>
+                   <input type='text' value={total} disabled={true} className='total'/>
                    <button onClick={handleClick2} className='formBtn'>{isVisible?"Change":"Next"}</button>
                 </div> }
 
