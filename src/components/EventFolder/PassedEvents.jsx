@@ -1,15 +1,26 @@
 import Event from "./Event";
 import Events from "../../pages/Events";
 import dataEvents from "./eventData";
-import { useState } from "react";
+import { useState,useMemo } from "react";
 
 function PassedEvents(){
     const [searchFilter,setSearchFilter] = useState(null);
+   
+
+    const filteredEvents = useMemo(() => {
+        if (searchFilter !== null && searchFilter !== '') {
+            return dataEvents
+                .filter(event => event.title.toLocaleLowerCase().includes(searchFilter)
+            )
+        }
+        else {
+            return dataEvents
+        }
+    }, [searchFilter]);
 
     return (
         <Events func={setSearchFilter}>
-        {dataEvents
-        .filter(event=>event.title.toLocaleLowerCase().includes(searchFilter))
+        {filteredEvents
         .filter(event=>event.passed)
         .map((event)=>(
             <Event 
