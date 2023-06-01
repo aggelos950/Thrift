@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Image from '../SimpleElementsFolder/Image';
+import Axios from 'axios';
 
 
 
@@ -16,7 +17,10 @@ const EventModal = ({ event, onClose }) => {
     const [inputFields,setInputFields] = useState([
         {name:'',surname:'',age:''}
     ])
-
+    const [email,setEmail] = useState("")
+    const [card_num,setCard_num] = useState("")
+    const [sec_code,setSec_code] = useState("");
+    const [bank,setBank] = useState(""); 
 
 
 
@@ -58,6 +62,28 @@ const EventModal = ({ event, onClose }) => {
         event.preventDefault();
         setIsVisible(!isVisible);
     }
+
+
+
+
+    function submitForm(){
+        Axios.post("http://localhost:3001/events",
+        {
+            attendants:selected,
+            type_ticket:ticketSelected,
+            participants:inputFields,
+            total:total,
+            email:email,
+            card_num:card_num,
+            sec_code:sec_code,
+            bank:bank,
+            user_id:"ru6y",
+            event_id:"rthyrt",
+        }).then((response) => {
+            alert("Reservation was made");
+        })
+    }
+
 
     useEffect(() => {
         var newInputFields = [];
@@ -106,13 +132,13 @@ const EventModal = ({ event, onClose }) => {
             }
         }}>
             <div className='modal'>
-                <Image dest={event.src} />
+                <Image dest={`http://localhost:3001/images/${event.src}`} />
                 <h1>{event.title}</h1>
                 <h2>{event.date}</h2>
                 <h4>{event.description}</h4>
             </div>
             <hr />
-            <form action="">
+            <form >
                 <h1>Book your spot</h1>
 
 
@@ -154,16 +180,16 @@ const EventModal = ({ event, onClose }) => {
 
                 {isVisible && <div className='info'>
                 <hr />
-                   <input type='text'placeholder='Email'/>
-                   <input type='text'placeholder='Card Number'/>
-                   <input type='text'placeholder='Security Code'/>
-                   <select className='banks'>
+                   <input type='text'placeholder='Email' onChange={(e) => {setEmail(e.target.value)}} />
+                   <input type='text'placeholder='Card Number' onChange={(e) => {setCard_num(e.target.value)}} />
+                   <input type='text'placeholder='Security Code' onChange={(e) => {setSec_code(e.target.value)}} />
+                   <select className='banks' onChange={(e) => {setBank(e.target.value)}} >
                         <option value="Eurobank">Eurobank</option>
                         <option value="Optima">Optima</option>
                         <option value="Alfa">Alfa</option>
                         <option value="Revolut">Revolut</option>
                    </select>
-                   <button type='submit' className='formBtn'>Book</button>
+                   <button type='button' className='formBtn' onClick={submitForm}>Book</button>
                 </div>}
             </form>
 

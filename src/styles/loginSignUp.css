@@ -23,6 +23,12 @@
   color:brown;
 }
 
+.login h1{
+    font-size: 38px;
+    color:brown;
+    display: flex;
+    margin-left: 50px;
+}
 
 .divUser a{
     color:brown;

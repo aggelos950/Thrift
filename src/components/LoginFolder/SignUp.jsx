@@ -9,7 +9,8 @@ function SignUp(){
     const [password,setPassword] = useState("");
     const navigate = useNavigate();
 
-    function navigateProfile(){
+    function navigateProfile(event){
+        event.preventDefault();
         Axios.post("http://localhost:3001/user/signup",
         { 
             username,
@@ -17,20 +18,22 @@ function SignUp(){
             password,
         }).then((response) =>{
             alert("User Registered");
+            navigate('/user/login')
         })
-        navigate('/user/login')
     }
 
 
     return(
     <div className='login'>
+        <form action="">
              <label>Username</label>
              <input type="text" onChange={(e)=>{setUsername(e.target.value)}}/>
              <label>Email</label>
              <input type="text" onChange={(e)=>{setEmail(e.target.value)}}/>
              <label>Password</label>
              <input type="text" onChange={(e)=>{setPassword(e.target.value)}}/>
-             <button onClick={navigateProfile}>Register</button>
+             <button onClick={(event) => navigateProfile(event)}>Register</button>
+        </form>
     </div>
     );
 }

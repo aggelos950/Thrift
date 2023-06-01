@@ -34,6 +34,10 @@ const ReservationShcema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        bank: {
+            type: String,
+            required: true,
+        },
         user_id: {
             type: String,
             required: true,
@@ -46,6 +50,6 @@ const ReservationShcema = new mongoose.Schema(
     }
 )
 
-const ReservationModel = mongoose.model("reservations",ReservantionShcema)
+const ReservationModel = mongoose.model("reservations",ReservationShcema)
 
 module.exports = ReservationModel;

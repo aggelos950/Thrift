@@ -7,15 +7,18 @@ import Axios from "axios";
 
 
 function CommingEvents() {
-    const [searchFilter,setSearchFilter] = useState(null);
+    const [searchFilter,setSearchFilter] = useState("");
     const [selectedEvent,setSelectedEvent] = useState(null);
     const [eventList,setEventList] = useState([])
 
     useEffect(() => {
         Axios.get("http://localhost:3001/events").then((response) => {
-            setEventList(response.data);
+                setEventList(response.data);
         })
     },[]);
+
+
+   
     
     const filteredEvents = useMemo(() => {
         if (searchFilter !== null && searchFilter !== '') {
@@ -24,10 +27,9 @@ function CommingEvents() {
             )
         }
         else {
-
             return eventList
         }
-    }, [searchFilter]);
+    }, [searchFilter,eventList]);
 
     return (
         <Events func={setSearchFilter} searchFilter={searchFilter} >
@@ -36,8 +38,7 @@ function CommingEvents() {
                 .filter(event=>!event.passed)
                 .map((event)=>(
                     <Event 
-                        key={event.id}
-                        id={event.id}
+                        key={event._id}
                         img={event.src} 
                         title={event.title} 
                         date={event.date} 

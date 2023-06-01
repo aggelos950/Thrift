@@ -24,7 +24,7 @@ function PassedEvents(){
         .filter(event=>event.passed)
         .map((event)=>(
             <Event 
-                key={event.id} 
+                key={event._id} 
                 img={event.src} 
                 title={event.title} 
                 date={event.date} 
