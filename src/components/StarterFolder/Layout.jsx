@@ -7,8 +7,6 @@ function Layout({ children }){
     return (
         <div >
           <Header />
-          {/* <Outlet /> */}
-          {/* {children} */}
           { children ?? <Outlet />}
           <DarkToLight />
           <Footer />

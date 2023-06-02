@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Image from '../SimpleElementsFolder/Image';
 import Axios from 'axios';
-
+import { useHistory } from "react-router-dom"
 
 
 const EventModal = ({ event, onClose }) => {

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useContext }  from "react";
+import { UserContext } from "../../App";
 
 function Header(){
+    const user = useContext(UserContext);
+     
+
+
     return(
         <div className="header">
             <div className="logo">

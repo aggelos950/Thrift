@@ -12,30 +12,36 @@ import SignUp from './components/LoginFolder/SignUp';
 import Login from './components/LoginFolder/Login';
 import Profile from './components/LoginFolder/Profile';
 
+
 export const ThemeContext = createContext(null);
+export const UserContext = createContext(null);
 
 function App() {
     const theme = useTheme();
+    const user = localStorage.getItem("user");
+    
     return (
         <ThemeContext.Provider value={theme}>
-            <Routes>
-                <Route element={<Layout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="events">
-                        <Route index element={<CommingEvents />} />
-                        <Route path="passedEvents" element={<PassedEvents />} />
-                        <Route path="commingEvents" element={<CommingEvents />} />
+            <UserContext.Provider value={user}>
+                <Routes>
+                    <Route element={<Layout />}>
+                        <Route path="/" element={<Home />} />
+                        <Route path="about" element={<About />} />
+                        <Route path="events">
+                            <Route index element={<CommingEvents />} />
+                            <Route path="passedEvents" element={<PassedEvents />} />
+                            <Route path="commingEvents" element={<CommingEvents />} />
+                        </Route>
+                        <Route path="user" element={<User />} >
+                            <Route index element={<Login />} />
+                            <Route path="signup" element={<SignUp />} />
+                            <Route path="login" element={<Login />} />
+                        </Route>
+                        <Route  path="profile" element={<Profile />} />
+                        <Route path="*" element={<NotFound />} />
                     </Route>
-                    <Route path="user" element={<User />} >
-                        <Route index element={<Login />} />
-                        <Route path="signup" element={<SignUp />} />
-                        <Route path="login" element={<Login />} />
-                    </Route>
-                    <Route  path="profile" element={<Profile />} />
-                    <Route path="*" element={<NotFound />} />
-                </Route>
-            </Routes>
+                </Routes>
+            </UserContext.Provider>
         </ThemeContext.Provider>
     );
 }

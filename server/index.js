@@ -31,6 +31,9 @@ app.get("/events", (req,res) =>{
 })
 
 
+
+
+
 app.post("/user/signup",(req,res) =>{
     const user = req.body;
     const newUser = new UserModel(user);

@@ -19,8 +19,10 @@ function Login(){
         let anwser = response.data;
         if (anwser) {
             localStorage.setItem("user",username);
-            alert("Welcome " + username + " !!!");
             navigate("/profile");
+            window.location.reload();
+            alert("Welcome " + username + " !!!");
+            
         }else{
             alert("User Error");
             setUsername("");

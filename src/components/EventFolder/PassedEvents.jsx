@@ -1,22 +1,32 @@
 import Event from "./Event";
 import Events from "../../pages/Events";
-import dataEvents from "./eventData";
 import { useState,useMemo } from "react";
+import Axios from "axios";
+import { useEffect } from "react";
 
 function PassedEvents(){
     const [searchFilter,setSearchFilter] = useState(null);
+    const [eventList,setEventList] = useState([]);
+
+    useEffect(() => {
+        Axios.get("http://localhost:3001/events").then((response) => {
+                setEventList(response.data);
+        })
+    },[]);
+
+
    
 
     const filteredEvents = useMemo(() => {
         if (searchFilter !== null && searchFilter !== '') {
-            return dataEvents
+            return eventList
                 .filter(event => event.title.toLocaleLowerCase().includes(searchFilter)
             )
         }
         else {
-            return dataEvents
+            return eventList;
         }
-    }, [searchFilter]);
+    }, [searchFilter,eventList]);
 
     return (
         <Events func={setSearchFilter}>
