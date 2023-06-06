@@ -4,12 +4,17 @@ import { useState, useMemo } from 'react';
 import Events from '../../pages/Events';
 import EventModal from './EventModal';
 import Axios from "axios";
+import { useContext }  from "react";
+import { UserContext } from "../../App";
+import { useNavigate } from 'react-router-dom';
 
 
 function CommingEvents() {
     const [searchFilter,setSearchFilter] = useState("");
     const [selectedEvent,setSelectedEvent] = useState(null);
-    const [eventList,setEventList] = useState([])
+    const [eventList,setEventList] = useState([]);
+    const {user} = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         Axios.get("http://localhost:3001/events").then((response) => {
@@ -44,7 +49,13 @@ function CommingEvents() {
                         date={event.date} 
                         desc={event.description} 
                         passed={event.passed} 
-                        handleClick={() => setSelectedEvent(event)}
+                        handleClick={() =>
+                             { if (user!==null){
+                                 setSelectedEvent(event)
+                             }else{
+                                 navigate("/user");
+                             }              
+                            }}
                     />
                 ))
             }

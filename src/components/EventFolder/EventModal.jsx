@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Image from '../SimpleElementsFolder/Image';
 import Axios from 'axios';
-import { useHistory } from "react-router-dom"
+
 
 
 const EventModal = ({ event, onClose }) => {
@@ -21,7 +21,7 @@ const EventModal = ({ event, onClose }) => {
     const [card_num,setCard_num] = useState("")
     const [sec_code,setSec_code] = useState("");
     const [bank,setBank] = useState(""); 
-
+    
 
 
 
@@ -114,7 +114,7 @@ const EventModal = ({ event, onClose }) => {
 
     //return statement
     return (
-        <Modal isOpen={true} onRequestClose={onClose} ariaHideApp={false} style={{
+        <Modal isOpen={true}  onRequestClose={onClose} ariaHideApp={false} style={{
             overlay:{
                 background: "rgba(49,49,49,0.8)"
             },

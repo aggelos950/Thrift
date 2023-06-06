@@ -30,7 +30,35 @@ app.get("/events", (req,res) =>{
   })
 })
 
+app.get("/users/:username", (req,res) => {
+    let username = req.params.username
+    var users = UserModel.find({username});
+    users.exec().then(function(response){
+        res.json(response[0])
+        console.log(response)
+    }).catch((err)=>{
+        console.log(err);
+        res.json([]);
+    })
+})
 
+app.post("/users", (req,res) => {
+   var loginUser = req.body.loginUser;
+
+   var conditions = {
+     username:loginUser
+   }
+   
+   var update = {
+        username : req.body.username,
+        email : req.body.email,
+        password : req.body.password
+   }
+
+    UserModel.findOneAndUpdate(conditions,update,{new: true}).then(function(result){
+        res.json(result)
+      });
+})
 
 
 

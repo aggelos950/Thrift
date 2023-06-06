@@ -18,11 +18,17 @@ export const UserContext = createContext(null);
 
 function App() {
     const theme = useTheme();
-    const user = localStorage.getItem("user");
-    
+    const [user,setUser] = useState(localStorage.getItem("user"));
+
+    function updateUser(userName) {
+         setUser(userName)
+         localStorage.setItem("user",userName);
+    }
+
+
     return (
         <ThemeContext.Provider value={theme}>
-            <UserContext.Provider value={user}>
+            <UserContext.Provider value={{user,updateUser}}>
                 <Routes>
                     <Route element={<Layout />}>
                         <Route path="/" element={<Home />} />

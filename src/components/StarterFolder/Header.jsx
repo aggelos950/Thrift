@@ -4,9 +4,12 @@ import { useContext }  from "react";
 import { UserContext } from "../../App";
 
 function Header(){
-    const user = useContext(UserContext);
-     
-
+    const {user} = useContext(UserContext);
+    
+     function logout(){
+        localStorage.clear()
+        window.location.reload();
+     }
 
     return(
         <div className="header">
@@ -17,7 +20,8 @@ function Header(){
             <ul>
                 <li><Link to="/events">Events</Link></li>
                 <li><Link to="/about">Info</Link></li>
-                <li><Link to="/user">Login</Link></li>
+                {user !== null && <li><Link to="/profile">Profile</Link></li>}
+                {user === null ? <li><Link to="/user">Login</Link></li> : <li onClick={logout}><Link to="/user">Logout</Link></li>}
              </ul>
             </nav>  
         </div>

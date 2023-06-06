@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Axios from "axios"
+import Axios from "axios";
 
 function SignUp(){
+    var UsernameGenerator = require('username-generator');
 
     const [username,setUsername] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const navigate = useNavigate();
+
+
+    const userRandomName = UsernameGenerator.generateUsername("_");
 
     function navigateProfile(event){
         event.preventDefault();
@@ -27,7 +31,7 @@ function SignUp(){
     <div className='login'>
         <form action="">
              <label>Username</label>
-             <input type="text" onChange={(e)=>{setUsername(e.target.value)}}/>
+             <input type="text" value={userRandomName} onChange={(e)=>{setUsername(e.target.value)}} disabled={true}/>
              <label>Email</label>
              <input type="text" onChange={(e)=>{setEmail(e.target.value)}}/>
              <label>Password</label>
