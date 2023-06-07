@@ -18,8 +18,9 @@ function Header(){
             </div>
             <nav>
             <ul>
-                <li><Link to="/events">Events</Link></li>
-                <li><Link to="/about">Info</Link></li>
+                {user == "admin" && <li><Link to="/adminPanel">Admin Panel</Link></li>}
+                {user !== "admin" && <li><Link to="/events">Events</Link></li>}
+                {user !== "admin" && <li><Link to="/about">Info</Link></li>}
                 {user !== null && <li><Link to="/profile">Profile</Link></li>}
                 {user === null ? <li><Link to="/user">Login</Link></li> : <li onClick={logout}><Link to="/user">Logout</Link></li>}
              </ul>

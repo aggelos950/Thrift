@@ -4,14 +4,14 @@ import Axios from "axios";
 
 function SignUp(){
     var UsernameGenerator = require('username-generator');
-
-    const [username,setUsername] = useState("");
+    const userRandomName = UsernameGenerator.generateUsername("_");
+    const [username,setUsername] = useState(userRandomName);
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const navigate = useNavigate();
 
 
-    const userRandomName = UsernameGenerator.generateUsername("_");
+   
 
     function navigateProfile(event){
         event.preventDefault();
@@ -31,7 +31,7 @@ function SignUp(){
     <div className='login'>
         <form action="">
              <label>Username</label>
-             <input type="text" value={userRandomName} onChange={(e)=>{setUsername(e.target.value)}} disabled={true}/>
+             <input type="text" value={username} disabled={true}/>
              <label>Email</label>
              <input type="text" onChange={(e)=>{setEmail(e.target.value)}}/>
              <label>Password</label>

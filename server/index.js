@@ -35,12 +35,22 @@ app.get("/users/:username", (req,res) => {
     var users = UserModel.find({username});
     users.exec().then(function(response){
         res.json(response[0])
-        console.log(response)
     }).catch((err)=>{
         console.log(err);
         res.json([]);
     })
 })
+
+app.get("/users", (req,res) => {
+   var users = UserModel.find({});
+   users.exec().then(function(response){
+     res.json(response)
+   }).catch((err)=>{
+     console.log(err);
+     res.json([]);
+   })
+})
+
 
 app.post("/users", (req,res) => {
    var loginUser = req.body.loginUser;

@@ -11,6 +11,9 @@ import Layout from "./components/StarterFolder/Layout";
 import SignUp from './components/LoginFolder/SignUp';
 import Login from './components/LoginFolder/Login';
 import Profile from './components/LoginFolder/Profile';
+import AdminPanel from './components/AdminFolder/AdminPanel';
+import AdminEvents from './components/AdminFolder/AdminEvents';
+import AdminUsers from './components/AdminFolder/AdminUsers';
 
 
 export const ThemeContext = createContext(null);
@@ -44,6 +47,9 @@ function App() {
                             <Route path="login" element={<Login />} />
                         </Route>
                         <Route  path="profile" element={<Profile />} />
+                        <Route path="adminPanel" element ={<AdminPanel />} />
+                        <Route path="adminEvents" element={<AdminEvents />} />
+                        <Route path="adminUsers" element={<AdminUsers />} />
                         <Route path="*" element={<NotFound />} />
                     </Route>
                 </Routes>

@@ -6,8 +6,6 @@ import Axios from "axios";
 function Profile(){
     
     const {user:loginUser,updateUser} = useContext(UserContext);
-    const [userList,setUserList] = useState([]);
-    
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('')
