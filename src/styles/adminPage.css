@@ -29,6 +29,7 @@
 
 .adminUsers{
     text-align: center;
+    margin-bottom: 70px;
 }
 
 .adminUsers h1,h3{
@@ -39,7 +40,7 @@
 }
 
 .addBtn{
-    margin-bottom: 90px;
+    margin-bottom: 30px;
     margin-top: 30px;
     width: 70%;
     height: 35px;
@@ -48,13 +49,35 @@
     font-size: 25px;
     max-width: 700px;
 }
-
-.userDiv{
+.userDivForm{
     background-color: rgb(66, 116, 99);
     width: 400px;
     margin: 0px auto;   
     margin-bottom: 10px;
     border-radius: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.userDivForm  input,label {
+    margin: 0px;
+    display: flex;
+    margin-left: 10px;
+    background: transparent;
+    border-radius: 10px;
+    width: 70%;
+    font-family: 'Amatic SC', cursive;
+    font-size: 22px;
+    padding-top: 2px;
+}
+
+.userDiv{
+    display: inline-block;
+    background-color: rgb(66, 116, 99);
+    width: 300px;
+    margin: 0px auto;   
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin: 10px 10px
 }
 .userDiv  input,label {
     margin: 0px;
@@ -72,7 +95,7 @@
 .nameInput{
     margin-bottom: 10px;
     font-size: 29px;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 .userDiv button{
     margin-bottom: 5px;

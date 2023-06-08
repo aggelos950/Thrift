@@ -66,10 +66,27 @@ app.post("/users", (req,res) => {
    }
 
     UserModel.findOneAndUpdate(conditions,update,{new: true}).then(function(result){
-        res.json(result)
+        res.json(result);
       });
 })
 
+app.post("/newUserAdmin",(req,res)=>{
+  const user = req.body;
+  const newUserAdmin = new UserModel(user);
+  newUserAdmin.save();
+
+  res.json(user);
+
+})
+
+app.post("/userDelete",(req,res)=>{
+  var userDelete = req.body.id;
+  UserModel.deleteOne({_id:userDelete}).then(function(result){
+    res.json(result);
+  })
+  
+
+})
 
 
 app.post("/user/signup",(req,res) =>{
