@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useContext }  from "react";
 import { UserContext } from "../../App";
@@ -18,7 +18,7 @@ function Header(){
             </div>
             <nav>
             <ul>
-                {user == "admin" && <li><Link to="/adminPanel">Admin Panel</Link></li>}
+                {user === "admin" && <li><Link to="/adminPanel">Admin Panel</Link></li>}
                 {user !== "admin" && <li><Link to="/events">Events</Link></li>}
                 {user !== "admin" && <li><Link to="/about">Info</Link></li>}
                 {user !== null && <li><Link to="/profile">Profile</Link></li>}

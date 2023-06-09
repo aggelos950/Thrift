@@ -17,7 +17,7 @@ const passedClass = props.passed?"passed":"";
                <Image dest={`http://localhost:3001/images/${props.img}`}/>
                <div className="eventInfo">
                    <h1>{props.title}</h1>
-                   <h3>{props.date}</h3>
+                   <h4>{props.date}</h4>
                    <p>{truncate(props.desc)}</p>
                </div>
            </div>

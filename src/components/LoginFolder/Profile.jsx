@@ -16,7 +16,7 @@ function Profile(){
           setUsername(initialUser.username);
           setEmail(initialUser.email);
         })
-    },[]);
+    });
 
 
     function updateData(){

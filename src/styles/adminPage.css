@@ -5,6 +5,12 @@
     margin-top: 130px;
 }
 
+.adminEventsDiv{
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+
 .admin h1{
     width: 270px;
     margin: 0px auto;
@@ -26,12 +32,17 @@
     font-size: 28px;
 }
 
+.admin button:hover{
+    opacity: 0.9;
+}
+
 
 .adminUsers{
     text-align: center;
     margin-bottom: 70px;
 }
 
+.adminEventsDiv h1,
 .adminUsers h1,h3{
     background-color: grey;
     width: 550px;
@@ -58,7 +69,19 @@
     padding-top: 15px;
     padding-bottom: 15px;
 }
-.userDivForm  input,label {
+
+.eventsDivForm{
+    background-color: rgb(194, 127, 3);
+    width: 400px;
+    margin: 0px auto;   
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.eventsDivForm input,
+.userDivForm  input {
     margin: 0px;
     display: flex;
     margin-left: 10px;
@@ -68,6 +91,7 @@
     font-family: 'Amatic SC', cursive;
     font-size: 22px;
     padding-top: 2px;
+    padding-left: 8px;
 }
 
 .userDiv{
@@ -79,7 +103,10 @@
     border-radius: 5px;
     margin: 10px 10px
 }
-.userDiv  input,label {
+
+.eventDiv input,
+.adminLabels,
+.userDiv  input {
     margin: 0px;
     display: flex;
     margin-left: 10px;
@@ -88,24 +115,65 @@
     font-family: 'Amatic SC', cursive;
     
 }
+
+
+
+.titleInput{
+    font-size: 30px;
+    
+}
+.dateInput{
+    font-size: 18px;
+    
+}
+.descInput{
+    font-size: 18px;
+    width: 80%;
+}
+textarea{
+    display: flex;
+    margin-top: 5px;
+    border: 2px solid #333333;
+    border-radius: 10px;
+    background: transparent;
+    font-family: 'Amatic SC', cursive;
+    margin-left: 13px;
+   padding: 3px 3px;
+}
+
+
 .detInput{
     font-size: 21px;
     padding-left: 5px;
+    border: 2px solid #333333;
 }
 .nameInput{
     margin-bottom: 10px;
     font-size: 29px;
     padding-left: 5px;
+    border: 2px solid #333333;
 }
+.eventDiv button,
 .userDiv button{
     margin-bottom: 5px;
     margin-left: 5px;
     width: 50px;
-    height:30px;
+    height:27px;
     border-radius: 25px;
     font-family: 'Amatic SC', cursive;
     font-size: 18px;
 }
+
+.eventsDivForm select{
+    display: flex;
+    margin-left: 13px;
+    margin-top: 5px;
+}
+
+.eventDiv button{
+    margin-left: 20px;
+}
+
 .userDiv label{
     margin-top: 10px;
     margin-bottom: 5px;

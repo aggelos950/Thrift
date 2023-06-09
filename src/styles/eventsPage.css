@@ -39,7 +39,7 @@
 }
 
 .eventInfo h1,
-.eventInfo h3{
+.eventInfo h4{
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -64,7 +64,7 @@ width: 125px;
     margin-right: 0px;
     display: block;
     margin:0 auto;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     
     border-radius: 5px;
     text-align: left;

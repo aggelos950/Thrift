@@ -6,9 +6,11 @@ import User from './User';
 function AdminUsers(){
 
     const [userList,setUserList] = useState([]);
-    const [userN,setUserN] = useState("");
-    const [email,setEmail] = useState("");
-    const [pass,setPass] = useState("");
+
+
+    const [username,setUsername] = useState("");
+    const [emaill,setEmaill] = useState("");
+    const [password,setPassword] = useState("");
 
     useEffect(()=>{
         Axios.get("http://localhost:3001/users").then((response)=>{
@@ -19,29 +21,28 @@ function AdminUsers(){
     function addUser(){
         Axios.post("http://localhost:3001/newUserAdmin",
         { 
-            username:userN,
-            email,
-            password:pass,
+            username,
+            email:emaill,
+            password,
         }).then((response) =>{
-            setUserN("");
-            setEmail("");
-            setPass("");
+            setUsername("");
+            setEmaill("");
+            setPassword("");
         })
     }
 
 
-    function updateUser(){
-        console.log("fregregerger")
-        // Axios.post("http://localhost:3001/userUpdate",{ 
-        //     _id:id,
-        //     username:userN,
-        //     email,
-        //     password:pass
-        // }).then((response)=>{
-        //     if (response){
-        //         alert("User Info Updated");
-        //     }
-        // })
+    function updateUser(id,username,email,password){
+        Axios.post("http://localhost:3001/userUpdate",{ 
+            id,
+            username,
+            email,
+            password
+        }).then((response)=>{
+            if (response){
+                alert("User Info Updated");
+            }
+        })
     }
  
     function deleteUser(id){
@@ -57,12 +58,12 @@ function AdminUsers(){
             <h3>Insert data to the empty fields and clik Add</h3>
             <form action="Post">
                 <div className="userDivForm">
-                    <label>Username:</label>
-                    <input className="nameInput" value={userN} onChange={(e) => {setUserN(e.target.value)}}></input>
-                    <label>Email:</label>
-                    <input className="detInput" value={email}  onChange={(e) => {setEmail(e.target.value)}}></input>
-                    <label>Password:</label>
-                    <input className="detInput" value={pass} onChange={(e) => {setPass(e.target.value)}}></input>
+                    <label className="adminLabels">Username:</label>
+                    <input className="nameInput" value={username} onChange={(e) => {setUsername(e.target.value)}}></input>
+                    <label className="adminLabels">Email:</label>
+                    <input className="detInput" value={emaill}  onChange={(e) => {setEmaill(e.target.value)}}></input>
+                    <label className="adminLabels">Password:</label>
+                    <input className="detInput" value={password} onChange={(e) => {setPassword(e.target.value)}}></input>
                 </div>
                 <button type='button' className='addBtn' onClick={addUser}>Add</button>
             </form>

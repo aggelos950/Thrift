@@ -6,6 +6,20 @@ const express = require("express")
 const cors = require("cors");
 const app = express();
 
+
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  },
+})
+
+const upload = multer({ storage: storage })
+
 app.use("/images",express.static("images"));
 
 app.use(express.json());
@@ -17,7 +31,6 @@ main().catch(err => console.log(err));
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/thriftDB');
 }
-
 
 app.get("/events", (req,res) =>{
    var events = EventModel.find({});
@@ -70,6 +83,24 @@ app.post("/users", (req,res) => {
       });
 })
 
+app.post("/userUpdate",(req,res)=>{
+  var userId = req.body.id;
+
+  var conditions = {
+    _id:userId
+  }
+
+  var update = {
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  }
+
+  UserModel.findOneAndUpdate(conditions,update,{new: true}).then(function(result){
+    res.json(result);
+  });
+})
+
 app.post("/newUserAdmin",(req,res)=>{
   const user = req.body;
   const newUserAdmin = new UserModel(user);
@@ -79,13 +110,35 @@ app.post("/newUserAdmin",(req,res)=>{
 
 })
 
+
+app.post("/newEventAdmin",upload.single('image'),(req,res) =>{
+  const event = req.body;
+  const newEvent = new EventModel({
+    src:event.imageName,
+    title:event.title,
+    date:event.date,
+    description:event.desc,
+    passed:event.passed
+  })
+  newEvent.save();
+
+  res.json(event);
+})
+
+
+
 app.post("/userDelete",(req,res)=>{
   var userDelete = req.body.id;
   UserModel.deleteOne({_id:userDelete}).then(function(result){
     res.json(result);
   })
-  
+})
 
+app.post("/eventDelete",(req,res)=>{
+  var eventDelete = req.body.id;
+  EventModel.deleteOne({_id:eventDelete}).then(function(result){
+    res.json(result);
+  })
 })
 
 
