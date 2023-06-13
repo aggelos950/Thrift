@@ -78,6 +78,7 @@
     border-radius: 5px;
     padding-top: 15px;
     padding-bottom: 15px;
+    
 }
 
 .eventsDivForm input,
@@ -113,7 +114,7 @@
     background: transparent;
     border: none;
     font-family: 'Amatic SC', cursive;
-    
+    width: 70%;
 }
 
 
@@ -157,7 +158,7 @@ textarea{
 .userDiv button{
     margin-bottom: 5px;
     margin-left: 5px;
-    width: 50px;
+    width: 120px;
     height:27px;
     border-radius: 25px;
     font-family: 'Amatic SC', cursive;
@@ -179,3 +180,45 @@ textarea{
     margin-bottom: 5px;
     font-size: 19px;
 }
+
+.eventsDivForm select{
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+input[type=file] {
+    width: 350px;
+  max-width: 100%;
+  color: #333333;
+  padding: 5px;
+  background: rgb(194, 127, 3);
+  border-radius: 10px;
+  border: 2px solid #333333
+  }
+
+  input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: grey;
+    padding: 5px 20px;
+    border-radius: 10px;
+    color: #333333;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+    font-family: 'Amatic SC', cursive;
+  }
+
+.eventDiv{
+    height: 162px;
+    width: 600px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+.eventInfo{
+    padding-bottom: 15px;
+}
+

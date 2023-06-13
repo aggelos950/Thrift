@@ -1,62 +1,90 @@
 import { useState,useEffect } from "react";
 import Axios from "axios";
 import Event from "./Event";
+import { useRef } from "react";
 
 function AdminEvents(){
 
     const [eventList,setEventList] = useState([]);
+    
+    const imageRef = useRef(null)
 
-    const [imageName,setImageName] = useState("");
+    const [image,setImage] = useState(null);
 
     const [passed,setPassed] = useState(true);
     const [title,setTitle] = useState("");
     const [date,setDate] = useState("");
     const [desc,setDesc] = useState("");
 
-    useEffect(() => {
+    function getEvents(){
         Axios.get("http://localhost:3001/events").then((response) => {
-                setEventList(response.data);
-        })
-    },[eventList]);
+            setEventList(response.data);
+    })
+    }
 
-    function addUser(){
-        Axios.post("http://localhost:3001/newEventAdmin",
-        { 
-            imageName,
+    useEffect(() => {
+       getEvents();
+    },[]);
+
+    function addEvent(){
+
+        const data = { 
+            image,
             title,
             date,
             desc,
             passed
-        }).then((response) =>{
+        }
+        const config = {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }}
+
+            console.log(data);
+
+        Axios.post("http://localhost:3001/newEventAdmin",data,config).then((response) =>{
             setTitle("");
             setDate("");
-            setImageName("");
+            setImage(null);
+            imageRef.current.value = null ;
             setDesc("");
             setPassed(true);
+            setEventList((prev)=>([
+                ...prev,response.data
+            ]))
         })
     }
 
 
-    function updateUser(id,username,email,password){
+    function updateEvent(id,title,date,desc){
         Axios.post("http://localhost:3001/eventUpdate",{ 
-           
+           id,
+           imagename: "homePage1.jpg",
+           title,
+           date,
+           desc
         }).then((response)=>{
             if (response){
-                alert("User Info Updated");
+                alert("Event Info Updated");
+                getEvents();
             }
         })
     }
  
-    function deleteUser(id){
+    function deleteEvent(id){
         Axios.post("http://localhost:3001/eventDelete",{id})
         .then((response)=>{
-            console.log(response);
+            setEventList((prev)=>
+                prev.filter((event)=>event._id!==id)
+            )
         })
     }
 
 
     function fileSelectedHnadler(event){
-        setImageName(event.target.files[0].name);
+        console.log(event)
+        setImage(event.target.files[0]);
+        
     }
 
     function handleChange(e) {
@@ -65,14 +93,15 @@ function AdminEvents(){
         setPassed(selectValue);
     }
 
+   
     return(
         <div className="adminEventsDiv">
             <h1>Creation of new events</h1>
             <h3>Insert data to the empty fields and clik Add</h3>
-            <form method="POST" action="/newEventAdmin" enctype="multipart/form-data" >
+            <form>
                 <div className="eventsDivForm">
                     <label className="adminLabels">Image:</label>
-                    <input type="file" name="image" onChange={fileSelectedHnadler} />
+                    <input type="file" onChange={fileSelectedHnadler} ref={imageRef}/>
                     <label className="adminLabels">Title:</label>
                     <input className="detInput" value={title} onChange={(e) => {setTitle(e.target.value)}}></input>
                     <label className="adminLabels">Date:</label>
@@ -85,7 +114,7 @@ function AdminEvents(){
                         <option value="false">False</option>
                     </select>
                 </div>
-                <button type='button' className='addBtn' onClick={addUser}>Add</button>
+                <button type='button' className='addBtn' onClick={addEvent}>Add</button>
             </form>
             <h1>Events In The System</h1>
             {eventList.map((event) =>
@@ -96,8 +125,8 @@ function AdminEvents(){
                     title={event.title} 
                     date={event.date} 
                     desc={event.description} 
-                    handleClick1={updateUser}
-                    handleClick2={deleteUser}
+                    handleClick1={updateEvent}
+                    handleClick2={deleteEvent}
                 />
             )}
         </div>

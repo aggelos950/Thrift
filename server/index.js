@@ -4,24 +4,27 @@ const UserModel = require('./models/Users');
 const ReservationModel = require('./models/Reservation');
 const express = require("express")
 const cors = require("cors");
-const app = express();
-
 
 const multer = require('multer')
 
+
+
+const app = express();
+
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'images/')
+    cb(null, './images')
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname)
+    cb(null, Date.now() + "_" + file.originalname)
   },
 })
 
-const upload = multer({ storage: storage })
+
+const upload = multer({ storage })
 
 app.use("/images",express.static("images"));
-
 app.use(express.json());
 app.use(cors());
 
@@ -101,6 +104,26 @@ app.post("/userUpdate",(req,res)=>{
   });
 })
 
+app.post("/eventUpdate",(req,res)=>{
+   var eventId = req.body.id;
+
+   var conditions = {
+    _id:eventId
+   }
+
+   var update = {
+       src: req.body.imagename,
+       title: req.body.title,
+       date: req.body.date,
+       description: req.body.desc
+   }
+
+
+   EventModel.findOneAndUpdate(conditions,update,{new: true}).then(function(result){
+    res.json(result);
+   })
+})
+
 app.post("/newUserAdmin",(req,res)=>{
   const user = req.body;
   const newUserAdmin = new UserModel(user);
@@ -114,7 +137,7 @@ app.post("/newUserAdmin",(req,res)=>{
 app.post("/newEventAdmin",upload.single('image'),(req,res) =>{
   const event = req.body;
   const newEvent = new EventModel({
-    src:event.imageName,
+    src:req.file.filename,
     title:event.title,
     date:event.date,
     description:event.desc,
@@ -122,9 +145,8 @@ app.post("/newEventAdmin",upload.single('image'),(req,res) =>{
   })
   newEvent.save();
 
-  res.json(event);
+  res.json(newEvent);
 })
-
 
 
 app.post("/userDelete",(req,res)=>{
