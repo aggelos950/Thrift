@@ -18,7 +18,6 @@ function Profile(){
         })
     });
 
-
     function updateData(){
         Axios.post("http://localhost:3001/users",{ 
             loginUser,

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Modal from 'react-modal';
 import Image from '../SimpleElementsFolder/Image';
 import Axios from 'axios';
+import emailjs from '@emailjs/browser';
 
 
-
-const EventModal = ({ event, onClose }) => {
+const EventModal = ({user, event, onClose }) => {
 
 
 //useStates
@@ -19,11 +19,16 @@ const EventModal = ({ event, onClose }) => {
     ])
     const [email,setEmail] = useState("")
     const [card_num,setCard_num] = useState("")
-    const [sec_code,setSec_code] = useState("");
-    const [bank,setBank] = useState(""); 
-    
+    const [sec_code,setSec_code] = useState(Math.floor(Math.random()*90000) + 10000);
+    const [bank,setBank] = useState("Eurobank"); 
+    const [userId,setUserId] = useState("");
+    const form = useRef();
 
-
+    useEffect(() => {
+        Axios.get(`http://localhost:3001/users/${user}`).then((response) =>{
+           setUserId(response.data._id);
+         })
+     });
 
 
 //functions
@@ -64,9 +69,17 @@ const EventModal = ({ event, onClose }) => {
     }
 
 
-
-
     function submitForm(){
+
+
+        emailjs.sendForm('service_v3yth2a','template_1egcibp',form.current,"YHeQCF06nkbiJkeFf").then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+
+
+
         Axios.post("http://localhost:3001/events",
         {
             attendants:selected,
@@ -77,11 +90,22 @@ const EventModal = ({ event, onClose }) => {
             card_num:card_num,
             sec_code:sec_code,
             bank:bank,
-            user_id:"ru6y",
-            event_id:"rthyrt",
+            user_id:userId,
+            event_id:event._id
         }).then((response) => {
             alert("Reservation was made");
+            setBank("Eurobank");
+            setCard_num("");
+            setEmail("");
+            setIsOpen(false);
+            setIsVisible(false);
+            onClose();
+            setInputFields([{name:'',surname:'',age:''}]);
+            setTotal("0$");
+            setSelected(1);
+            setTicketSelected("");
         })
+
     }
 
 
@@ -138,7 +162,7 @@ const EventModal = ({ event, onClose }) => {
                 <h4>{event.description}</h4>
             </div>
             <hr />
-            <form >
+            <form ref={form}>
                 <h1>Book your spot</h1>
 
 
@@ -170,6 +194,7 @@ const EventModal = ({ event, onClose }) => {
                             <input type='text'placeholder='Name' name='name' disabled={isVisible} value={input.name} onChange={event => handleFormChange(index,event)}/>
                             <input type='text'placeholder='Surname' name='surname' disabled={isVisible} value={input.surname} onChange={event => handleFormChange(index,event)}/>
                             <input type='text'placeholder='Age' name='age' disabled={isVisible} value={input.age} onChange={event => handleFormChange(index,event)}/>
+                            <input type="hidden" value={"zaW"+ (Math.floor(Math.random()*90000000) + 10000000)+" "} name='ticketCode'/>
                             <br /> <br />
                         </div>
                     );
@@ -180,9 +205,9 @@ const EventModal = ({ event, onClose }) => {
 
                 {isVisible && <div className='info'>
                 <hr />
-                   <input type='text'placeholder='Email' onChange={(e) => {setEmail(e.target.value)}} />
+                   <input type='text'placeholder='Email' name='email' onChange={(e) => {setEmail(e.target.value)}} />
                    <input type='text'placeholder='Card Number' onChange={(e) => {setCard_num(e.target.value)}} />
-                   <input type='text'placeholder='Security Code' onChange={(e) => {setSec_code(e.target.value)}} />
+                   <input type='text'placeholder='Security Code' value={sec_code} disabled={true} />
                    <select className='banks' onChange={(e) => {setBank(e.target.value)}} >
                         <option value="Eurobank">Eurobank</option>
                         <option value="Optima">Optima</option>

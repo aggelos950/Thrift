@@ -19,9 +19,14 @@ function Event(props){
                    <textarea className='descInput' rows="3" cols="90" value={upDesc} onChange={(e)=>{setUpDesc(e.target.value)}} ></textarea>
                </div>
                <button onClick={(e)=>props.handleClick1(props.id,upTitle,upDate,upDesc)}>Change info</button> 
-               <button onClick={(e=>setShowModal(!showModal))}>Change image</button>
+               <button onClick={(e=>setShowModal(true))}>Change Image</button>
                <button onClick={(e)=>props.handleClick2(props.id)}>Delete</button> 
-               {showModal && <ImageUpdateModal />}
+               {showModal && <ImageUpdateModal 
+                        id={props.id}
+                        setShowModal={setShowModal}
+                        getEvents = {props.getEvents}
+                    />
+                }
            </div>
       );
 }

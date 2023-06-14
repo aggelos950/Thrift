@@ -40,8 +40,6 @@ function AdminEvents(){
               'Content-Type': 'multipart/form-data'
             }}
 
-            console.log(data);
-
         Axios.post("http://localhost:3001/newEventAdmin",data,config).then((response) =>{
             setTitle("");
             setDate("");
@@ -59,7 +57,6 @@ function AdminEvents(){
     function updateEvent(id,title,date,desc){
         Axios.post("http://localhost:3001/eventUpdate",{ 
            id,
-           imagename: "homePage1.jpg",
            title,
            date,
            desc
@@ -82,9 +79,7 @@ function AdminEvents(){
 
 
     function fileSelectedHnadler(event){
-        console.log(event)
         setImage(event.target.files[0]);
-        
     }
 
     function handleChange(e) {
@@ -127,6 +122,7 @@ function AdminEvents(){
                     desc={event.description} 
                     handleClick1={updateEvent}
                     handleClick2={deleteEvent}
+                    getEvents={getEvents}
                 />
             )}
         </div>

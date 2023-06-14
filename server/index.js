@@ -112,7 +112,6 @@ app.post("/eventUpdate",(req,res)=>{
    }
 
    var update = {
-       src: req.body.imagename,
        title: req.body.title,
        date: req.body.date,
        description: req.body.desc
@@ -122,6 +121,23 @@ app.post("/eventUpdate",(req,res)=>{
    EventModel.findOneAndUpdate(conditions,update,{new: true}).then(function(result){
     res.json(result);
    })
+})
+
+app.post("/updateImage",upload.single("image"),(req,res)=>{
+    var eventId = req.body.id;
+
+    var conditions = {
+    _id:eventId
+    }
+
+    var update = {
+      src:req.file.filename
+    }
+
+    EventModel.findOneAndUpdate(conditions,update,{new: true}).then(function(result){
+      res.json(result);
+     })
+
 })
 
 app.post("/newUserAdmin",(req,res)=>{

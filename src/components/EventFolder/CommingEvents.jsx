@@ -60,6 +60,7 @@ function CommingEvents() {
                 ))
             }
             <EventModal
+                user={user}
                 event={selectedEvent}
                 onClose={() => setSelectedEvent(null)}
             />
