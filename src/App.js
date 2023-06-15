@@ -14,6 +14,8 @@ import Profile from './components/LoginFolder/Profile';
 import AdminPanel from './components/AdminFolder/AdminPanel';
 import AdminEvents from './components/AdminFolder/AdminEvents';
 import AdminUsers from './components/AdminFolder/AdminUsers';
+import EventsHistory from './components/EventFolder/EventHistory';
+import ReviewEvents from './components/EventFolder/ReviewEvents';
 
 
 
@@ -41,6 +43,8 @@ function App() {
                             <Route index element={<CommingEvents />} />
                             <Route path="passedEvents" element={<PassedEvents />} />
                             <Route path="commingEvents" element={<CommingEvents />} />
+                            <Route path="reviewEvents" element={<ReviewEvents />} />
+                            <Route path="eventHistory" element={<EventsHistory />} />
                         </Route>
                         <Route path="user" element={<User />} >
                             <Route index element={<Login />} />

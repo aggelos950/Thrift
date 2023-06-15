@@ -44,6 +44,7 @@ function CommingEvents() {
                 .map((event)=>(
                     <Event 
                         key={event._id}
+                        id={event._id}
                         img={event.src} 
                         title={event.title} 
                         date={event.date} 

@@ -29,6 +29,9 @@ function ChangeAbout(){
             document.getElementById("two").classList.remove("showDiv");
             document.getElementById("three").classList.add("showDiv");
             break;
+        default:
+            console.log("something went wrong")
+        
 
     }
    },[child]);

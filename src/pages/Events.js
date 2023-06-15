@@ -15,7 +15,8 @@ function Events(props) {
                 <input type='search' placeholder='Search Event' className='searchBar' onChange={handleChange} value={props.searchFilter}/>
                 <div className='linkDiv'>
                     <Link to='/events/passedEvents' className='listLink'>Passed Events</Link>
-                    <Link to='/events/commingEvents' className='listLink'>| Comming Soon!!!</Link>
+                    <Link to='/events/commingEvents' className='listLink'>| Comming Soon</Link>
+                    <Link to='/events/eventHistory' className='listLink'>| Event History</Link>
                 </div>
                     
                     <div className='allEventDiv'>

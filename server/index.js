@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const EventModel = require('./models/Events');
 const UserModel = require('./models/Users');
 const ReservationModel = require('./models/Reservation');
+const CommentModel = require('./models/Comments');
 const express = require("express")
 const cors = require("cors");
 
@@ -38,7 +39,6 @@ async function main() {
 app.get("/events", (req,res) =>{
    var events = EventModel.find({});
    events.exec().then(function(response){
-    
     res.json(response)
   }).catch((err)=>{
     console.log(err);
@@ -140,6 +140,8 @@ app.post("/updateImage",upload.single("image"),(req,res)=>{
 
 })
 
+
+
 app.post("/newUserAdmin",(req,res)=>{
   const user = req.body;
   const newUserAdmin = new UserModel(user);
@@ -202,6 +204,30 @@ app.post("/user", async (req,res) => {
     }
 })
 
+app.post("/comment",upload.single('image'),(req,res) =>{
+  const comment = req.body;
+  
+  const newComment = new CommentModel({
+    user:comment.user,
+    event:comment.eventId,
+    src:req.file.filename,
+    commentText:comment.formComment
+  });
+
+  newComment.save()
+
+  res.json(newComment);
+})
+
+app.get("/comment",(req,res)=>{
+  var comments = CommentModel.find({});
+  comments.exec().then(function(response){
+    res.json(response)
+  }).catch((err)=>{
+    console.log(err);
+    res.json([]);
+  })
+})
 
 
 app.post("/events",(req,res) =>{

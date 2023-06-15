@@ -23,6 +23,7 @@ const EventShcema = new mongoose.Schema(
             type: Boolean,
             required: true,
         },
+        
     }
 )
 

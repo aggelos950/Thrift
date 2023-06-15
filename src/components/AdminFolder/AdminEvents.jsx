@@ -33,7 +33,7 @@ function AdminEvents(){
             title,
             date,
             desc,
-            passed
+            passed,
         }
         const config = {
             headers: {
