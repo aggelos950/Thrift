@@ -21,14 +21,7 @@ const EventModal = ({user, event, onClose }) => {
     const [card_num,setCard_num] = useState("")
     const [sec_code,setSec_code] = useState(Math.floor(Math.random()*90000) + 10000);
     const [bank,setBank] = useState("Eurobank"); 
-    const [userId,setUserId] = useState("");
     const form = useRef();
-
-    useEffect(() => {
-        Axios.get(`http://localhost:3001/users/${user}`).then((response) =>{
-           setUserId(response.data._id);
-         })
-     });
 
 
 //functions
@@ -90,8 +83,8 @@ const EventModal = ({user, event, onClose }) => {
             card_num:card_num,
             sec_code:sec_code,
             bank:bank,
-            user_id:userId,
-            event_id:event._id
+            username:user,
+            event_id:event._id,
         }).then((response) => {
             alert("Reservation was made");
             setBank("Eurobank");

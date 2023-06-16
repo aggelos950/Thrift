@@ -204,7 +204,7 @@ app.post("/user", async (req,res) => {
     }
 })
 
-app.post("/comment",upload.single('image'),(req,res) =>{
+app.post("/comments",upload.single('image'),(req,res) =>{
   const comment = req.body;
   
   const newComment = new CommentModel({
@@ -219,8 +219,9 @@ app.post("/comment",upload.single('image'),(req,res) =>{
   res.json(newComment);
 })
 
-app.get("/comment",(req,res)=>{
-  var comments = CommentModel.find({});
+app.get("/comments/:eventId",(req,res)=>{
+  let eventId = req.params.eventId
+  var comments = CommentModel.find({event:eventId});
   comments.exec().then(function(response){
     res.json(response)
   }).catch((err)=>{
@@ -229,6 +230,36 @@ app.get("/comment",(req,res)=>{
   })
 })
 
+
+app.get("/allowOneComment", async(req,res) => {
+  let eventId = req.query.evenId;
+  let user = req.query.user;
+
+  var madeReservation = ReservationModel.find({event_id:eventId,user:user});
+  const hasMadeReservation = await madeReservation.exec();
+
+  var isThereOneComment = CommentModel.find({event:eventId,user:user});
+  const hasCommented = await isThereOneComment.exec();
+  
+  console.log(hasCommented.length===0)
+
+  console.log(hasMadeReservation.length===0)
+  
+  res.json(false)
+
+
+})
+
+
+app.get("/reservations",(req,res)=>{
+  var reservations = ReservationModel.find({});
+  reservations.exec().then(function(response){
+    res.json(response)
+  }).catch((err)=>{
+    console.log(err);
+    res.json([]);
+  })
+})
 
 app.post("/events",(req,res) =>{
     const reserv = req.body;

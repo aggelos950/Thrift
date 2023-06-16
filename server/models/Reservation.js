@@ -38,7 +38,7 @@ const ReservationShcema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        user_id: {
+        username: {
             type: String,
             required: true,
         },

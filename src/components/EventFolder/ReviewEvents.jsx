@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useContext, useEffect, useState }  from "react";
 import { UserContext } from "../../App";
 import Comment from "./Comment";
@@ -7,22 +7,26 @@ import { useRef } from "react";
 
 function ReviewEvents(){
 
-    const location = useLocation();
+    const {eventId} = useParams()
     const {user} = useContext(UserContext);
-    const [eventId,setEventsId] = useState(location.state.eventId);
     const [image,setImage] = useState(null);
     const [formComment,setFormComment] = useState("");
     const imageRef = useRef(null);
     const [comments,setComments] = useState([]);
-
+    const [showForm,setShowForm] = useState(true)
+    
 
     useEffect(()=>{
-      Axios.get("http://localhost:3001/comment").then((response)=>{
+      Axios.get(`http://localhost:3001/comments/${eventId}`).then((response)=>{
         setComments(response.data);
       })
-    },[]);
 
+      Axios.get(`http://localhost:3001/allowOneComment?evenId=${eventId}&user=${user}`).then((response)=>{
+        setShowForm(response.data);
+        
+      })
 
+    },[]);    
 
 
     function submitComment(){
@@ -39,7 +43,7 @@ function ReviewEvents(){
         }
 
 
-        Axios.post("http://localhost:3001/comment",data,config).then((response)=>{
+        Axios.post("http://localhost:3001/comments",data,config).then((response)=>{
             imageRef.current.value = null;
             setFormComment("");
             setComments((prev)=>(
@@ -51,7 +55,7 @@ function ReviewEvents(){
     return(
         
         <div className="commentPageDiv">
-            <form>
+            {showForm && <form>
             <div className="commentDivForm">
                 <label>Image:</label>
                 <input type="file" onChange={(e)=>setImage(e.target.files[0])} ref={imageRef}/><br /><br />
@@ -59,9 +63,8 @@ function ReviewEvents(){
                 <textarea name="comment" cols="130" rows="6" value={formComment} onChange={(e)=>{setFormComment(e.target.value)}}></textarea>
                 <button type="button" onClick={submitComment}>Submit</button>
             </div>
-            </form>
+            </form>}
             {comments
-            .filter((comment)=>comment.event===eventId)
             .map((comment)=>(
                 <Comment 
                     key={comment._id}

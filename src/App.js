@@ -43,7 +43,7 @@ function App() {
                             <Route index element={<CommingEvents />} />
                             <Route path="passedEvents" element={<PassedEvents />} />
                             <Route path="commingEvents" element={<CommingEvents />} />
-                            <Route path="reviewEvents" element={<ReviewEvents />} />
+                            <Route path="reviewEvents/:eventId" element={<ReviewEvents />} />
                             <Route path="eventHistory" element={<EventsHistory />} />
                         </Route>
                         <Route path="user" element={<User />} >

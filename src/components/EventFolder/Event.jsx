@@ -13,11 +13,7 @@ const navigate = useNavigate();
     }
 
     function goToComments(){
-        navigate('/events/reviewEvents',{
-            state: {
-                eventId: props.id,
-            }
-        });
+        navigate(`/events/reviewEvents/${props.id}`);
     };
 
     

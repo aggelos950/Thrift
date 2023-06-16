@@ -16,7 +16,7 @@ function Profile(){
           setUsername(initialUser.username);
           setEmail(initialUser.email);
         })
-    });
+    },[]);
 
     function updateData(){
         Axios.post("http://localhost:3001/users",{ 

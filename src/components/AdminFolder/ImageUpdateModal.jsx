@@ -62,8 +62,7 @@ return(
                             <label>Update Image</label><br /><br />
                             <input type="file" onChange={handleImage} ref={imageRef2} /><br />
                             <button className='formBtn' type='button' onClick={handleClick}>Change</button>
-                            <hr />
-                            <button className='formBtn' type='button' onClick={handleClick2}>Close</button>
+                            <button className='modalBtn' type='button' onClick={handleClick2}>Close</button>
                         </form>
                     </div>
     
