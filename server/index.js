@@ -57,6 +57,18 @@ app.get("/users/:username", (req,res) => {
     })
 })
 
+
+app.get("/reservEvent/:eventId" , (req,res)=>{
+  let _id = req.params.eventId;
+  var event = EventModel.find({_id});
+    event.exec().then(function(response){
+      res.json(response[0]);
+    }).catch((err)=>{
+      console.log(err);
+      res.json([]);
+  })
+})
+
 app.get("/users", (req,res) => {
    var users = UserModel.find({});
    users.exec().then(function(response){
@@ -235,18 +247,21 @@ app.get("/allowOneComment", async(req,res) => {
   let eventId = req.query.evenId;
   let user = req.query.user;
 
-  var madeReservation = ReservationModel.find({event_id:eventId,user:user});
+  var madeReservation = ReservationModel.find({event_id:eventId,username:user});
   const hasMadeReservation = await madeReservation.exec();
 
   var isThereOneComment = CommentModel.find({event:eventId,user:user});
   const hasCommented = await isThereOneComment.exec();
   
-  console.log(hasCommented.length===0)
 
-  console.log(hasMadeReservation.length===0)
-  
-  res.json(false)
+  const boolHasCommented = hasCommented.length!==0
+  const boolHasMadeReservation = hasMadeReservation.length!==0
 
+  if(boolHasCommented===false && boolHasMadeReservation===true) {
+    res.json(true);
+  }else{
+    res.json(false)
+  }
 
 })
 

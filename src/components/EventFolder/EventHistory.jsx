@@ -27,6 +27,8 @@ useEffect(()=>{
                         ticket={reservation.type_ticket}
                         event={reservation.event_id}
                         total={reservation.total}
+                        email={reservation.email}
+                        ticket_code={reservation.ticket_code}
                     />)
             }
         </div>

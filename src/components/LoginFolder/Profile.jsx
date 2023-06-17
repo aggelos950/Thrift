@@ -19,17 +19,30 @@ function Profile(){
     },[]);
 
     function updateData(){
-        Axios.post("http://localhost:3001/users",{ 
-            loginUser,
-            username,
-            email,
-            password
-        }).then((response)=>{
-            if (response){
-                updateUser(response.data.username)
-                alert("User Info Updated");
-            }
-        })
+
+        Axios.get(`http://localhost:3001/users/${username}`).then((response)=>{
+           
+            if (response.data!==""){
+                  alert("Username is already in use");
+            }else{
+                  if(email===""||password===""||username===""){
+                      alert("Please fill all the fields")
+                  }else{
+                    Axios.post("http://localhost:3001/users",{ 
+                        loginUser,
+                        username,
+                        email,
+                        password
+                    }).then((response)=>{
+                        if (response){
+                            updateUser(response.data.username)
+                            alert("User Info Updated");
+                        }
+                    })
+                 }
+             }
+          }); 
+
     }
 
     return(

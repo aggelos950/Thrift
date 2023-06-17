@@ -21,12 +21,16 @@ function ReviewEvents(){
         setComments(response.data);
       })
 
-      Axios.get(`http://localhost:3001/allowOneComment?evenId=${eventId}&user=${user}`).then((response)=>{
-        setShowForm(response.data);
-        
-      })
+      
 
     },[]);    
+
+
+    useEffect(()=>{
+        Axios.get(`http://localhost:3001/allowOneComment?evenId=${eventId}&user=${user}`).then((response)=>{
+            setShowForm(response.data);
+          })
+    },[comments])
 
 
     function submitComment(){

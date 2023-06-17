@@ -15,16 +15,28 @@ function SignUp(){
 
     function navigateProfile(event){
         event.preventDefault();
-        Axios.post("http://localhost:3001/user/signup",
-        { 
-            username,
-            email,
-            password,
-        }).then((response) =>{
-            alert("User Registered");
-            navigate('/user/login')
-        })
+
+        Axios.get(`http://localhost:3001/users/${username}`).then((response)=>{
+              if (response.data!==""){
+                    alert("Username is already in use");
+              }else{
+                    if(email===""||password===""){
+                        alert("Please fill all the fields")
+                    }else{
+                            Axios.post("http://localhost:3001/user/signup",
+                        { 
+                            username,
+                            email,
+                            password,
+                        }).then((response) =>{
+                            alert("User Registered");
+                            navigate('/user/login')
+                        })
+                   }
+               }
+            }); 
     }
+    
 
 
     return(

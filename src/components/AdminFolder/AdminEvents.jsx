@@ -98,11 +98,11 @@ function AdminEvents(){
                     <label className="adminLabels">Image:</label>
                     <input type="file" onChange={fileSelectedHnadler} ref={imageRef}/>
                     <label className="adminLabels">Title:</label>
-                    <input className="detInput" value={title} onChange={(e) => {setTitle(e.target.value)}}></input>
+                    <input className="detInput" value={title} placeholder="New title" onChange={(e) => {setTitle(e.target.value)}}></input>
                     <label className="adminLabels">Date:</label>
-                    <input className="detInput" value={date}  onChange={(e) => {setDate(e.target.value)}}></input>
+                    <input className="detInput" value={date} placeholder="month/day/year"  onChange={(e) => {setDate(e.target.value)}}></input>
                     <label className="adminLabels">Description:</label>
-                    <textarea className="detInput" rows="3" cols="65" value={desc} onChange={(e) => {setDesc(e.target.value)}}></textarea>
+                    <textarea className="detInput" placeholder="New description" rows="3" cols="65" value={desc} onChange={(e) => {setDesc(e.target.value)}}></textarea>
                     <label className="adminLabels">Passed:</label>
                     <select onChange={handleChange}>
                         <option value="true">True</option>

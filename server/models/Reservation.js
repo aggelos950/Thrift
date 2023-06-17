@@ -45,6 +45,9 @@ const ReservationShcema = new mongoose.Schema(
         event_id: {
             type: String,
             required: true,
+        },
+        ticket_code: {
+            type: String
         }
 
     }

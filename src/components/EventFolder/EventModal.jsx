@@ -21,6 +21,7 @@ const EventModal = ({user, event, onClose }) => {
     const [card_num,setCard_num] = useState("")
     const [sec_code,setSec_code] = useState(Math.floor(Math.random()*90000) + 10000);
     const [bank,setBank] = useState("Eurobank"); 
+    const [ticket_code,setTicket_code] = useState("zaW"+ (Math.floor(Math.random()*90000000) + 10000000) + " ")
     const form = useRef();
 
 
@@ -85,6 +86,7 @@ const EventModal = ({user, event, onClose }) => {
             bank:bank,
             username:user,
             event_id:event._id,
+            ticket_code
         }).then((response) => {
             alert("Reservation was made");
             setBank("Eurobank");
@@ -187,7 +189,7 @@ const EventModal = ({user, event, onClose }) => {
                             <input type='text'placeholder='Name' name='name' disabled={isVisible} value={input.name} onChange={event => handleFormChange(index,event)}/>
                             <input type='text'placeholder='Surname' name='surname' disabled={isVisible} value={input.surname} onChange={event => handleFormChange(index,event)}/>
                             <input type='text'placeholder='Age' name='age' disabled={isVisible} value={input.age} onChange={event => handleFormChange(index,event)}/>
-                            <input type="hidden" value={"zaW"+ (Math.floor(Math.random()*90000000) + 10000000)+" "} name='ticketCode'/>
+                            <input type="hidden" value={ticket_code} name='ticketCode'/>
                             <br /> <br />
                         </div>
                     );

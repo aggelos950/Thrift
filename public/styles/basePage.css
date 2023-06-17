@@ -1,12 +1,16 @@
 body{
       background-image: url(../images/lightTheme1.jpg);
-      height: 100%; 
-      background-repeat: no-repeat;
-      background-size: cover; 
-      margin: 0;
-      margin-right: 10px;
-      font-family: 'Amatic SC', cursive;
-}
+      background-repeat: no-repeat; 
+    background-position: center;
+    background-attachment: fixed;       
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height:100%;
+    font-family: 'Amatic SC', cursive;
+    margin: 0;
+    margin-right: 10px;
+    width:100%;}
 
 .footer{
     position: fixed;
