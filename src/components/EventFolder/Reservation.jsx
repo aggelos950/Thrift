@@ -24,6 +24,7 @@ function Reservation(props){
         if (eventDate>=nowDATE){
             emailjs.sendForm('service_v3yth2a','template_1egcibp',form.current,"YHeQCF06nkbiJkeFf").then((result) => {
                 console.log(result.text);
+                alert("Your ticket code was re-send to your email!!")
             }, (error) => {
                 console.log(error.text);
             });

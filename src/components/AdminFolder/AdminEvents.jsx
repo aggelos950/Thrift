@@ -54,12 +54,13 @@ function AdminEvents(){
     }
 
 
-    function updateEvent(id,title,date,desc){
+    function updateEvent(id,title,date,desc,passed){
         Axios.post("http://localhost:3001/eventUpdate",{ 
            id,
            title,
            date,
-           desc
+           desc,
+           passed
         }).then((response)=>{
             if (response){
                 alert("Event Info Updated");
@@ -119,7 +120,8 @@ function AdminEvents(){
                     img={event.src} 
                     title={event.title} 
                     date={event.date} 
-                    desc={event.description} 
+                    desc={event.description}
+                    passed={event.passed} 
                     handleClick1={updateEvent}
                     handleClick2={deleteEvent}
                     getEvents={getEvents}

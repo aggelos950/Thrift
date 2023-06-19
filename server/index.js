@@ -126,7 +126,8 @@ app.post("/eventUpdate",(req,res)=>{
    var update = {
        title: req.body.title,
        date: req.body.date,
-       description: req.body.desc
+       description: req.body.desc,
+       passed: req.body.passed
    }
 
 

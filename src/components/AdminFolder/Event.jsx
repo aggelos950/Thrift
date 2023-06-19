@@ -9,6 +9,13 @@ function Event(props){
    const [upTitle,setUpTitle] = useState(props.title);
    const [upDate,setUpDate] = useState(props.date);
    const [upDesc,setUpDesc] = useState(props.desc);
+   const [upPassed,setUpPassed] = useState(true);
+
+   function handleChange(e) {
+    let boolString = "true"
+    var selectValue = (boolString===e.target.value);
+    setUpPassed(selectValue);
+}
 
     return(
         <div className="eventDiv" onClick={props.handleClick}>
@@ -18,7 +25,11 @@ function Event(props){
                    <input className='dateInput' value={upDate} onChange={(e)=>{setUpDate(e.target.value)}}/>
                    <textarea className='descInput' rows="3" cols="90" value={upDesc} onChange={(e)=>{setUpDesc(e.target.value)}} ></textarea>
                </div>
-               <button onClick={(e)=>props.handleClick1(props.id,upTitle,upDate,upDesc)}>Change info</button> 
+               <select className='lastSelect' onChange={handleChange}>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                </select>
+               <button onClick={(e)=>props.handleClick1(props.id,upTitle,upDate,upDesc,upPassed)}>Change info</button> 
                <button onClick={(e=>setShowModal(true))}>Change Image</button>
                <button onClick={(e)=>props.handleClick2(props.id)}>Delete</button> 
                {showModal && <ImageUpdateModal 
