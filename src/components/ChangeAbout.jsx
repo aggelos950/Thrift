@@ -9,7 +9,6 @@ function ChangeAbout(){
      if (child===3){
         setChild(1)
      }
-     console.log(child);
    }
 
    useEffect(()=>{

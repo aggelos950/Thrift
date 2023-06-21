@@ -24,7 +24,7 @@ function Login(){
             alert("Welcome " + username + " !!!");
             
         }else{
-            alert("User Error");
+            alert("Wrong user inputs");
             setUsername("");
             setPassword("");
         } 

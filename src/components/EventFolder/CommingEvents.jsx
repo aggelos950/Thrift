@@ -22,9 +22,6 @@ function CommingEvents() {
         })
     },[]);
 
-
-   
-    
     const filteredEvents = useMemo(() => {
         if (searchFilter !== null && searchFilter !== '') {
             return eventList

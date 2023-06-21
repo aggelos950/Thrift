@@ -19,31 +19,53 @@ function AdminUsers(){
     },[userList]);
 
     function addUser(){
-        Axios.post("http://localhost:3001/newUserAdmin",
-        { 
-            username,
-            email:emaill,
-            password,
-        }).then((response) =>{
-            setUsername("");
-            setEmaill("");
-            setPassword("");
+        Axios.get(`http://localhost:3001/users/${username}`).then((response)=>{
+            if (response.data!==""){
+                    alert("Username is already in use");
+                    setUsername("");
+                    setEmaill("");
+                    setPassword("");
+            }else{
+                if(emaill===""||password===""){
+                    alert("Please fill all the fields")
+                }else{
+                    Axios.post("http://localhost:3001/newUserAdmin",
+                    { 
+                        username,
+                        email:emaill,
+                        password,
+                    }).then((response) =>{
+                        setUsername("");
+                        setEmaill("");
+                        setPassword("");
+                    })
+                }
+            }
         })
     }
 
 
     function updateUser(id,username,email,password){
-        Axios.post("http://localhost:3001/userUpdate",{ 
-            id,
-            username,
-            email,
-            password
-        }).then((response)=>{
-            if (response){
-                alert("User Info Updated");
+        Axios.get(`http://localhost:3001/users/${username}`).then((response)=>{
+            if (response.data!==""){
+                    alert("Username is already in use");
+                    setUsername("");
+                    setEmaill("");
+                    setPassword("");
+            }else{
+                    Axios.post("http://localhost:3001/userUpdate",{ 
+                        id,
+                        username,
+                        email,
+                        password
+                    }).then((response)=>{
+                        if (response){
+                            alert("User Info Updated");
+                        }
+                    })
+                }
             }
-        })
-    }
+        )}
  
     function deleteUser(id){
         Axios.post("http://localhost:3001/userDelete",{id})
